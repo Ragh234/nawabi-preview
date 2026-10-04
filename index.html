@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Nawabi Gents Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hanken+Grotesk:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap">
+<style>
+/* Layout concept: a Mughal court gate. Arch-framed photography, a jaali lattice texture,
+   and an illuminated "royal menu" the guest composes into a WhatsApp booking. */
+:root{
+  --lapis:#131a31;        /* night lapis ground */
+  --lapis-2:#1c2546;      /* raised panels */
+  --lapis-3:#26305a;      /* hairlines on dark */
+  --ivory:#f1ebdf;        /* text on lapis */
+  --muted:#a6a9c4;        /* lapis-tinted secondary text */
+  --saffron:#e3a23b;      /* gilding, prices, focus */
+  --pomegranate:#b8324a;  /* marquee band, highlights */
+  --display:"Rozha One", "Playfair Display", Georgia, serif;
+  --body:"Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+  --arabic:"Amiri", "Noto Naskh Arabic", "Times New Roman", serif;
+  --gutter:clamp(16px, 4vw, 48px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--lapis);color:var(--ivory);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:var(--gutter)}
+.jaali{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%23e3a23b' stroke-opacity='.13' stroke-width='1'%3E%3Crect x='14' y='14' width='28' height='28'/%3E%3Crect x='14' y='14' width='28' height='28' transform='rotate(45 28 28)'/%3E%3Cpath d='M0 28h8M48 28h8M28 0v8M28 48v8'/%3E%3C/g%3E%3C/svg%3E")}
+
+/* preview ribbon */
+.ribbon{background:var(--saffron);color:var(--lapis);font:600 13px/1.4 var(--body);text-align:center;padding:8px var(--gutter);letter-spacing:.02em}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--lapis) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--lapis-3)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
+.brand{display:flex;align-items:baseline;gap:12px;text-decoration:none}
+.brand b{font:400 30px/1 var(--display);letter-spacing:.04em}
+.brand small{font:600 11px/1.2 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+nav{display:flex;align-items:center;gap:26px}
+nav a.l{font-size:15px;text-decoration:none;color:var(--muted)}
+nav a.l:hover{color:var(--ivory)}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:12px 22px;font:700 15px/1 var(--body);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s ease, background .2s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-gold{background:var(--saffron);color:var(--lapis)}
+.btn-line{border-color:var(--saffron);color:var(--saffron);background:transparent}
+.btn svg{width:18px;height:18px}
+
+/* hero */
+.hero{position:relative;padding-block:clamp(40px,7vw,96px) clamp(48px,7vw,88px)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,80px);align-items:center}
+.eyebrow{font:600 12px/1.2 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--saffron);display:flex;gap:10px;align-items:center}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--saffron)}
+h1{font:400 clamp(54px,8.6vw,118px)/.92 var(--display);margin:22px 0 10px;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--saffron)}
+.ar{font:400 clamp(22px,2.6vw,30px)/1.4 var(--arabic);color:var(--muted);margin:0 0 22px;direction:rtl;text-align:left}
+.lede{max-width:46ch;color:var(--muted);font-size:clamp(17px,1.5vw,19px);margin:0 0 30px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;padding-top:22px;border-top:1px solid var(--lapis-3);font-size:14px;color:var(--muted)}
+.facts strong{display:block;color:var(--ivory);font:400 22px/1.2 var(--display)}
+
+/* arch frame */
+.arch-wrap{position:relative;max-width:470px;justify-self:end;width:100%}
+.arch{clip-path:url(#arch);aspect-ratio:4/5.4;width:100%}
+.arch-gild{background:linear-gradient(160deg,#f3c46b,var(--saffron) 40%,#9a6a1f);padding:9px}
+.arch-gild .arch{background:var(--lapis)}
+.arch img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.05)}
+.arch-line{position:absolute;inset:-18px 18px 30px -18px;pointer-events:none}
+.seal{position:absolute;left:-46px;bottom:34px;width:132px;height:132px;animation:spin 28s linear infinite}
+.seal text{font:600 10.5px var(--body);letter-spacing:.32em;fill:var(--ivory);text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* marquee */
+.band{background:var(--pomegranate);overflow:hidden;border-block:1px solid #d9536a}
+.track{display:flex;gap:42px;width:max-content;padding-block:16px;animation:slide 38s linear infinite;font:400 26px/1 var(--display);white-space:nowrap}
+.track span{display:inline-flex;align-items:center;gap:42px}
+.track span::after{content:"";width:12px;height:12px;background:var(--saffron);transform:rotate(45deg);box-shadow:0 0 0 3px var(--pomegranate),0 0 0 4px var(--saffron)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* section heads */
+section{padding-block:clamp(64px,9vw,120px)}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px 40px;margin-bottom:44px}
+h2{font:400 clamp(40px,5.4vw,72px)/.98 var(--display);margin:14px 0 0;text-wrap:balance}
+.head p{max-width:42ch;color:var(--muted);margin:0}
+
+/* royal menu composer */
+.menu-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,4vw,48px);align-items:start}
+.card{background:var(--lapis-2);border:1px solid var(--lapis-3);border-radius:28px 28px 6px 6px;padding:clamp(22px,3vw,38px);position:relative}
+.card::before{content:"";position:absolute;inset:8px;border:1px solid color-mix(in srgb,var(--saffron) 35%,transparent);border-radius:22px 22px 3px 3px;pointer-events:none}
+.cat{font:600 12px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--saffron);margin:6px 0 10px}
+.cat:not(:first-child){margin-top:30px}
+.item{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:12px 6px;border-radius:12px;cursor:pointer;transition:background .2s}
+.item:hover{background:color-mix(in srgb,var(--lapis-3) 60%,transparent)}
+.item input{appearance:none;width:22px;height:22px;border:1.5px solid var(--muted);border-radius:6px;margin:0;display:grid;place-items:center;cursor:pointer;transition:all .15s}
+.item input:checked{background:var(--saffron);border-color:var(--saffron)}
+.item input:checked::after{content:"";width:6px;height:11px;border:solid var(--lapis);border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.name{display:flex;align-items:baseline;gap:10px;min-width:0}
+.name b{font-weight:600;white-space:nowrap}
+.name i{font-style:normal;flex:1;border-bottom:1.5px dotted var(--lapis-3);transform:translateY(-4px);min-width:20px}
+.name small{color:var(--muted);font-size:13px;white-space:nowrap}
+.price{font:400 22px/1 var(--display);color:var(--saffron);font-variant-numeric:tabular-nums;white-space:nowrap}
+.price sup{font:600 10px var(--body);letter-spacing:.12em;margin-right:4px;vertical-align:5px}
+.note{font-size:13px;color:var(--muted);margin:22px 0 0}
+
+.ticket{position:sticky;top:96px;background:var(--ivory);color:var(--lapis);border-radius:20px;padding:28px;overflow:hidden}
+.ticket h3{font:400 30px/1 var(--display);margin:0 0 4px}
+.ticket .sub{font-size:14px;color:#545a78;margin:0 0 18px}
+.ticket ul{list-style:none;margin:0 0 16px;padding:0 0 14px;border-bottom:1.5px dashed #c9c3b4;min-height:52px}
+.ticket li{display:flex;justify-content:space-between;gap:10px;font-size:15px;padding:4px 0}
+.ticket li span:last-child{font-variant-numeric:tabular-nums}
+.empty{color:#7a7f99;font-size:14px}
+.tot{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}
+.tot div:first-child{font-size:14px;color:#545a78}
+.tot strong{font:400 34px/1 var(--display);font-variant-numeric:tabular-nums}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.fields label{font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#545a78;display:grid;gap:6px}
+.fields .full{grid-column:1/-1}
+.fields input,.fields select{font:500 15px var(--body);color:var(--lapis);background:#fff;border:1px solid #d6cfbf;border-radius:10px;padding:10px 12px;width:100%}
+.ticket .btn{width:100%;justify-content:center;background:#1f8f4e;color:#fff;padding:15px}
+.ticket .tear{position:absolute;left:0;right:0;top:-8px;height:16px;background:radial-gradient(circle at 8px 0,var(--lapis) 7px,transparent 8px) 0 0/16px 16px repeat-x}
+
+/* ritual */
+.ritual{background:var(--lapis-2)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:s;border-top:1px solid var(--lapis-3)}
+.step{padding:28px 22px 6px 0;position:relative}
+.step:not(:last-child){border-right:1px solid var(--lapis-3);margin-right:22px}
+.step::before{counter-increment:s;content:counter(s);font:400 64px/1 var(--display);color:var(--saffron);display:block;margin-bottom:14px}
+.step h4{font:700 17px/1.3 var(--body);margin:0 0 8px}
+.step p{font-size:15px;color:var(--muted);margin:0}
+.step em{font-style:normal;color:var(--ivory)}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:clamp(14px,2vw,24px);align-items:end}
+.gallery figure{margin:0}
+.gallery .shape{overflow:hidden;border-radius:999px 999px 14px 14px;aspect-ratio:3/4;border:1px solid var(--lapis-3)}
+.gallery figure:nth-child(2) .shape{aspect-ratio:4/5;border-radius:16px}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{font-size:14px;color:var(--muted);margin-top:12px;display:flex;justify-content:space-between;gap:10px}
+.gallery figcaption b{color:var(--ivory);font-weight:600}
+
+/* reviews + visit */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px)}
+.review{border:1px dashed color-mix(in srgb,var(--saffron) 55%,transparent);border-radius:18px;padding:32px;display:grid;gap:14px;align-content:start}
+.stars{color:var(--saffron);letter-spacing:6px;font-size:22px}
+.review h3{font:400 34px/1.05 var(--display);margin:0}
+.review p{color:var(--muted);margin:0}
+.visit{background:var(--lapis-2);border-radius:18px;padding:32px;display:grid;gap:20px}
+.row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--lapis-3)}
+.row:last-of-type{border-bottom:0;padding-bottom:0}
+.row dt{font:600 11px/1.6 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--saffron)}
+.row dd{margin:0}
+.copy{background:none;border:1px solid var(--lapis-3);color:var(--muted);border-radius:999px;font:600 12px var(--body);padding:4px 10px;margin-left:8px;cursor:pointer}
+.copy:hover{color:var(--ivory);border-color:var(--muted)}
+
+footer{border-top:1px solid var(--lapis-3);padding-block:40px;color:var(--muted);font-size:14px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+.foot b{font:400 26px/1 var(--display);color:var(--ivory);letter-spacing:.04em}
+
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:60px;height:60px;border-radius:50%;background:#1f8f4e;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35);color:#fff}
+.wa-float svg{width:30px;height:30px}
+
+@media (max-width:900px){
+  .hero-grid,.menu-grid,.split{grid-template-columns:1fr}
+  .arch-wrap{justify-self:center;max-width:380px}
+  .seal{left:-20px;width:104px;height:104px}
+  nav a.l{display:none}
+  .ticket{position:static}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:not(:last-child){border-right:0;margin-right:0}
+  .step{border-bottom:1px solid var(--lapis-3);padding-right:14px}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery figure:nth-child(2){grid-column:1/-1;order:-1}
+}
+@media (max-width:520px){
+  .brand small{display:none}
+  .steps{grid-template-columns:1fr}
+  .fields{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:4px}
+  .name small{display:none}
+  .name b{white-space:normal}
+  .name i{display:none}
+  .price{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <clipPath id="arch" clipPathUnits="objectBoundingBox">
+    <path d="M0,1 V0.4 C0,0.24 0.2,0.15 0.36,0.09 C0.44,0.06 0.49,0.03 0.5,0 C0.51,0.03 0.56,0.06 0.64,0.09 C0.8,0.15 1,0.24 1,0.4 V1 Z"/>
+  </clipPath>
+</svg>
+
+<div class="ribbon">Design preview for Nawabi Gents Salon by Raghav Malani. Photos and prices are placeholders until you send your own.</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><b>NAWABI</b><small>Gents Salon · Al Barsha 1</small></a>
+    <nav>
+      <a class="l" href="#menu">Menu</a>
+      <a class="l" href="#ritual">Moroccan bath</a>
+      <a class="l" href="#visit">Visit</a>
+      <a class="btn btn-gold" href="https://wa.me/971522073915" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>
+        Book</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero jaali">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Al Barsha 1, Dubai · Open 7 days</div>
+        <h1>Groomed like a <em>Nawab.</em></h1>
+        <p class="ar" lang="ar">صالون نوابي للرجال</p>
+        <p class="lede">Sharp haircuts, hot-towel shaves and a proper Moroccan bath, done slowly and done right, in the heart of Al Barsha 1.</p>
+        <div class="cta">
+          <a class="btn btn-gold" href="#menu">Compose your visit</a>
+          <a class="btn btn-line" href="https://wa.me/971522073915" target="_blank" rel="noopener">WhatsApp the salon</a>
+        </div>
+        <div class="facts">
+          <div><strong>7 days</strong>open every week</div>
+          <div><strong>WhatsApp</strong>booking in one message</div>
+          <div><strong>Moroccan</strong>bath on the menu</div>
+        </div>
+      </div>
+      <div class="arch-wrap">
+        <svg class="arch-line" viewBox="0 0 100 135" preserveAspectRatio="none" aria-hidden="true"><path d="M1,134 V54 C1,32 20,20 36,12 C44,8 49,4 50,1 C51,4 56,8 64,12 C80,20 99,32 99,54 V134" fill="none" stroke="#e3a23b" stroke-opacity=".55" stroke-width=".35" vector-effect="non-scaling-stroke"/></svg>
+        <div class="arch arch-gild"><div class="arch"><img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1100&q=75&fm=jpg" alt="Barber chairs under warm lights in a tiled salon"></div></div>
+        <svg class="seal" viewBox="0 0 140 140" aria-hidden="true">
+          <circle cx="70" cy="70" r="66" fill="#131a31" stroke="#e3a23b" stroke-width="1"/>
+          <path id="ring" d="M70,70 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0" fill="none"/>
+          <text><textPath href="#ring">Nawabi · Gents salon · Al Barsha ·</textPath></text>
+          <g transform="translate(70 70)" fill="#e3a23b"><rect x="-11" y="-11" width="22" height="22"/><rect x="-11" y="-11" width="22" height="22" transform="rotate(45)"/></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true">
+    <div class="track">
+      <span>Haircut</span><span>Hot towel shave</span><span>Beard trim</span><span>Moroccan bath</span><span>Waxing</span><span>Manicure</span><span>Pedicure</span>
+      <span>Haircut</span><span>Hot towel shave</span><span>Beard trim</span><span>Moroccan bath</span><span>Waxing</span><span>Manicure</span><span>Pedicure</span>
+    </div>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="eyebrow">The royal menu</div><h2>Pick your services.<br>We'll hold the chair.</h2></div>
+        <p>Tick what you want, choose a time, and your booking request lands in our WhatsApp, already written.</p>
+      </div>
+      <div class="menu-grid">
+        <div class="card" id="menu-list"></div>
+        <aside class="ticket" aria-live="polite">
+          <div class="tear"></div>
+          <h3>Your visit</h3>
+          <p class="sub">Sent to Nawabi on WhatsApp</p>
+          <ul id="picked"></ul>
+          <div class="tot"><div>About <b id="mins">0</b> min</div><strong id="total">AED 0</strong></div>
+          <div class="fields">
+            <label for="day">Day<select id="day"><option>Today</option><option>Tomorrow</option><option>This weekend</option></select></label>
+            <label for="time">Time<select id="time"></select></label>
+            <label for="guest" class="full">Your name<input id="guest" placeholder="e.g. Ahmed" autocomplete="name"></label>
+          </div>
+          <a class="btn" id="send" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+            Send booking request</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="ritual" class="ritual jaali">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="eyebrow">The Moroccan bath</div><h2>Sixty minutes,<br>five steps.</h2></div>
+        <p>The full hammam ritual, done the traditional way. Ask the team to adjust any step for sensitive skin.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h4>Steam</h4><p>Warm room and hot water open the pores and loosen the skin.</p></div>
+        <div class="step"><h4>Black soap</h4><p><em>Beldi</em> olive soap is worked in and left to soften.</p></div>
+        <div class="step"><h4>Kessa scrub</h4><p>The <em>kessa</em> glove lifts away dead skin from head to toe.</p></div>
+        <div class="step"><h4>Rhassoul clay</h4><p>Mineral <em>rhassoul</em> clay draws out impurities and calms the skin.</p></div>
+        <div class="step"><h4>Rinse and oil</h4><p>A cool rinse, then argan oil to leave the skin soft.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head"><div><div class="eyebrow">In the chair</div><h2>The work speaks.</h2></div><p>Your own photos go here: fresh fades, beard lines and the salon itself.</p></div>
+      <div class="gallery">
+        <figure><div class="shape"><img loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=70&fm=jpg" alt="Barber shaping a skin fade with clippers"></div><figcaption><b>Skin fade</b><span>Haircut</span></figcaption></figure>
+        <figure><div class="shape"><img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=900&q=70&fm=jpg" alt="Hot towel straight razor shave"></div><figcaption><b>Straight razor shave</b><span>Beard and shave</span></figcaption></figure>
+        <figure><div class="shape"><img loading="lazy" src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=700&q=70&fm=jpg" alt="Leather barber chair"></div><figcaption><b>Your chair</b><span>Al Barsha 1</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" style="padding-top:0">
+    <div class="wrap split">
+      <div class="review">
+        <div class="stars" aria-hidden="true">✦✦✦✦✦</div>
+        <h3>Your Google reviews show up here.</h3>
+        <p>On the live site, this section pulls your real star rating and the latest reviews from your Google Business Profile, so new customers see what regulars already know.</p>
+      </div>
+      <dl class="visit">
+        <div class="row"><dt>Where</dt><dd>Al Barsha 1, Dubai, UAE<br><a href="https://www.google.com/maps/search/?api=1&query=Nawabi+Gents+Salon+Al+Barsha+1+Dubai" target="_blank" rel="noopener" style="color:var(--saffron)">Get directions</a></dd></div>
+        <div class="row"><dt>Call</dt><dd><span id="phone">+971 52 207 3915</span><button class="copy" type="button" data-copy="+971522073915">Copy</button></dd></div>
+        <div class="row"><dt>Hours</dt><dd>Open 7 days a week<br><span style="color:var(--muted);font-size:14px">Exact timings to be added</span></dd></div>
+        <div class="row"><dt>Book</dt><dd>WhatsApp, call, or ask at the desk</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><b>NAWABI</b> <span class="ar" lang="ar" style="font-size:20px;margin-left:10px">صالون نوابي للرجال</span></div>
+    <div>Design preview by Raghav Malani · not yet the official website</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/971522073915" target="_blank" rel="noopener" aria-label="Chat with Nawabi on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>
+</a>
+
+<script>
+const WA = "971522073915";
+const MENU = [
+  {cat:"Hair", items:[
+    {id:"cut", name:"Haircut", note:"wash and style", min:30, aed:40, on:true},
+    {id:"fade", name:"Skin fade", note:"clipper and razor", min:40, aed:50},
+    {id:"kids", name:"Kids haircut", note:"under 12", min:25, aed:30}]},
+  {cat:"Beard and shave", items:[
+    {id:"beard", name:"Beard trim and line-up", note:"razor edges", min:15, aed:25, on:true},
+    {id:"shave", name:"Hot towel shave", note:"straight razor", min:25, aed:35}]},
+  {cat:"Bath and grooming", items:[
+    {id:"hammam", name:"Moroccan bath", note:"full ritual", min:60, aed:120},
+    {id:"mani", name:"Manicure", note:"", min:30, aed:40},
+    {id:"pedi", name:"Pedicure", note:"", min:40, aed:60},
+    {id:"wax", name:"Waxing", note:"per area", min:20, aed:35}]}
+];
+const list = document.getElementById("menu-list");
+let html = "";
+MENU.forEach(g => {
+  html += `<div class="cat">${g.cat}</div>`;
+  g.items.forEach(it => {
+    html += `<label class="item" for="s-${it.id}">
+      <input type="checkbox" id="s-${it.id}" data-id="${it.id}" ${it.on ? "checked" : ""}>
+      <span class="name"><b>${it.name}</b><i></i><small>${it.min} min</small></span>
+      <span class="price"><sup>AED</sup>${it.aed}</span></label>`;
+  });
+});
+html += `<p class="note">Sample prices for this preview. The salon's real price list goes here.</p>`;
+list.innerHTML = html;
+
+const timeSel = document.getElementById("time");
+for (let h = 10; h <= 22; h++) {
+  for (const m of [0, 30]) {
+    if (h === 22 && m) continue;
+    const label = `${((h + 11) % 12) + 1}:${m ? "30" : "00"} ${h < 12 ? "am" : "pm"}`;
+    timeSel.add(new Option(label, label, false, h === 18 && !m));
+  }
+}
+
+const all = MENU.flatMap(g => g.items);
+function update(){
+  const chosen = all.filter(it => document.getElementById("s-" + it.id).checked);
+  const ul = document.getElementById("picked");
+  ul.innerHTML = chosen.length ? chosen.map(it => `<li><span>${it.name}</span><span>AED ${it.aed}</span></li>`).join("")
+                               : `<li class="empty">Tick a service on the menu to start.</li>`;
+  const mins = chosen.reduce((a, b) => a + b.min, 0), aed = chosen.reduce((a, b) => a + b.aed, 0);
+  document.getElementById("mins").textContent = mins;
+  document.getElementById("total").textContent = "AED " + aed;
+  const who = document.getElementById("guest").value.trim();
+  const msg = `Hi Nawabi, I'd like to book:\n${chosen.map(c => "- " + c.name).join("\n") || "- (services to confirm)"}\nWhen: ${document.getElementById("day").value}, ${timeSel.value}` + (who ? `\nName: ${who}` : "");
+  document.getElementById("send").href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+}
+document.addEventListener("input", update);
+document.addEventListener("change", update);
+update();
+
+document.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
+  navigator.clipboard?.writeText(b.dataset.copy).then(() => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1600); })
+    .catch(() => { const r = document.createRange(); r.selectNodeContents(document.getElementById("phone")); getSelection().removeAllRanges(); getSelection().addRange(r); });
+}));
+</script>
+</body>
+</html>
